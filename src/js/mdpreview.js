@@ -3,7 +3,7 @@
 	var $;
 	Modernizr.load({
 		test: (window.location.hash.substr(1, 3) == 'md/'), 
-		yep: ['../src/js/showdown.js', '../src/js/ender.min.js'],
+		yep: ['../src/js/showdown.js', '../src/js/ender.min.js', '../src/parse_file.js'],
 		complete: function() {
 			if (window.ender) {
 				var post = window.location.hash.substr(4);
@@ -15,8 +15,7 @@
 					type: 'html',
 					success: function(res) {
 					
-						var parsed = parseMarkdown(res);
-						renderMarkdown(parsed.meta, parsed.markdown);
+						renderMarkdown(parseMarkdown(res));
 					
 					}
 				});
@@ -24,37 +23,17 @@
 		}
 	});
 
-	function parseMarkdown (text) {
-
-		var
-			parsed = text.split(/[\n\r]/),
-			meta = parsed[0],
-			markdown = parsed.slice(1).join('\n');
-			
-		try {
-			meta = JSON.parse('{'+meta+'}');
-		}
-		catch (e) {
-			meta = {};
-			markdown = text;
-		}
-
-		return {
-			meta: meta,
-			markdown: markdown
-		};
-	}
-
-	function renderMarkdown(meta, markdown) {
+	function renderMarkdown(fields) {
 
 		var converter = new Showdown.converter();
-		$('#markdown').html(converter.makeHtml(markdown));
+		$('#markdown').html(converter.makeHtml(fields.body));
+		delete fields.body;
 
-		Object.keys(meta).forEach(function(key) {
+		Object.keys(fields).forEach(function(key) {
 
 			var $el = $(key);
 			if ($el[0]) {
-				$el.text(meta[key]);
+				$el.text(fields[key]);
 			}
 
 		});

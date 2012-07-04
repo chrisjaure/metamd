@@ -1,7 +1,6 @@
-"title": "page1.md"
-
-Test
-====
+Page 1
+======
+title: page1.md
 
 This is a _test_.
 
