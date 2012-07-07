@@ -12,7 +12,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "marked": "~0.2.5"
+    "marked": "~0.2.5",
+    "uglify-js": "~1.3.2"
   },
   "devDependencies": {
     "mocha": "*",
