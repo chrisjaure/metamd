@@ -4,13 +4,13 @@
 
 		describe('parse', function() {
 
-			var page = 'Page 1\r\n======\ntitle: page1.md\rtags:test\n\nPage 1';
+			var page = 'Page 1\r\n======\ntitle: page1.md\rtags:test\n\nPage 1\n\ntest';
 
 			it('should parse the body', function() {
 
 				var data = parse(page);
 
-				expect(data).to.have.property('body').that.equal('Page 1\n=\n\nPage 1');
+				expect(data).to.have.property('body').that.equal('Page 1\n=\n\nPage 1\n\ntest');
 			});
 
 			it('should parse the meta data', function() {

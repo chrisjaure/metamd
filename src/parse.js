@@ -26,12 +26,12 @@ module.exports = function (text) {
 		body;
 		
 	text = text.replace(/\r\n|\r/g, '\n');
-	body = text.replace(/=+\n+([\s\S]*)\n\n/, function(match, meta) {
+	body = text.replace(/=+\n+([\s\S]*?)\n\n/, function(match, meta) {
 
 		meta.split('\n').forEach(function( field ) {
 
 			var parsed = field.split(':');
-			fields[parsed[0]] = parsed[1].trim();
+			fields[parsed[0]] = (parsed[1] || '').trim();
 
 		});
 
