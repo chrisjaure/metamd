@@ -26,5 +26,5 @@
 
 })(
 	typeof chai == 'undefined' ? require('chai').expect : chai.expect,
-	typeof lighter == 'undefined' ? require('../src/lighter').parse : lighter.parse
+	typeof lighter == 'undefined' ? require('../src').parse : lighter.parse
 );

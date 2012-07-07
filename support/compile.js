@@ -5,7 +5,7 @@ var
 	browserify = require('browserify'),
 
 	bundle = browserify({
-		entry : __dirname + '/../src/lighter.js',
+		entry : __dirname + '/../src/index.js',
 		exports: 'require',
 		watch: (process.argv[2] == '-w')
 	});

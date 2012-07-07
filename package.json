@@ -6,7 +6,7 @@
   "engine": {
     "node": ">=0.6"
   },
-  "main": "./src/lighter",
+  "main": "./src",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec"
   },
