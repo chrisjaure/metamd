@@ -6,9 +6,11 @@ var
 
 	bundle = browserify({
 		entry : __dirname + '/../src/index.js',
-		exports: 'require',
 		watch: (process.argv[2] == '-w')
 	});
+
+// try to enable different methods of loading
+bundle.append(fs.readFileSync(__dirname + '/append.js'));
 
 function write () {
 	var src = bundle.bundle();

@@ -1,4 +1,4 @@
-var require = function (file, cwd) {
+(function(){var require = function (file, cwd) {
     var resolved = require.resolve(file, cwd || '/');
     var mod = require.modules[resolved];
     if (!mod) throw new Error(
@@ -1229,3 +1229,21 @@ exports.parse = require('./parse');
 
 exports.render = require('./render');});
 require("/src/index.js");
+
+(function (name, definition) {
+
+	if (typeof define == 'function') {
+		define(definition)
+	}
+	else if (typeof module !='undefined') {
+		module.exports = definition()
+	}
+	else {
+		this[name] = definition()
+	}
+
+})( 'lighter', function () {
+
+	return require('/src/index.js');
+
+});})();

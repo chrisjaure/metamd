@@ -1,20 +1,21 @@
 <html>
 <head>
 	<title>Test</title>
-	<script type="text/javascript" src="../lighter.client.js"></script>
+	<script type="text/javascript" src="require.js"></script>
 </head>
 <body>
 	<h1>header</h1>
-	<div id="markdown">
-		
+	<div id="markdown"></div>
+	<p><small>footer</small></p>
+
 	<script type="text/javascript">
 
-		var lighter = require('../src');
-		document.write(lighter.render(lighter.parse('## This is a test').body));
+		// You can load this with an AMD loader if you'd like!
+		// Otherwise you can load it normally; `lighter` will be exposed that way
+		require(['../lighter.client.js'], function(lighter) {
+			document.getElementById('markdown').innerHTML = lighter.render(lighter.parse('## This is a test').body);
+		});
 
 	</script>
-
-	</div>
-	<p><small>footer</small></p>
 </body>
 </html>
