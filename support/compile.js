@@ -1,0 +1,21 @@
+var folio = require('folio');
+
+folio('lighter')
+	.root(__dirname, '..')
+	.use(folio.requires())
+		.dir('./src')
+		.package('lighter')
+		.entry('./lighter.js')
+		.pop()
+	.use(folio.indent())
+		.line(' ')
+		.pop()
+	.use(folio.wrapper())
+		.template('amd')
+		.package('lighter')
+		.expose("require('lighter')")
+		.pop()
+	.use(folio.save())
+		.file('./lighter.js')
+		.pop()
+	.compile();
