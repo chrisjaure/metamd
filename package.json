@@ -1,5 +1,5 @@
 {
-  "name": "Lighter",
+  "name": "lighter",
   "version": "0.1.0",
   "author": "Chris Jaure (http://cleverchris.com)",
   "description": "Static site generator.",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "chai": "*"
+    "chai": "*",
+    "browserify": "1.3.x"
   }
 }

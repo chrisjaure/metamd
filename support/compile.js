@@ -1,22 +1,19 @@
-var folio = require('folio');
+#!/usr/bin/env node
+	 
+var fs = require('fs');
+var browserify = require('browserify');
 
-folio('lighter')
-  .root(__dirname, '..')
-  .use(folio.requires())
-    .dir('./src')
-    .package('lighter')
-    .entry('./lighter.js')
-    .pop()
-  .use(folio.indent())
-    .line(' ')
-    .pop()
-  .use(folio.wrapper())
-    .template('amd')
-    .package('lighter')
-    .expose("require('lighter')")
-    .pop()
-  // .use(folio.minify()).pop()
-  .use(folio.save())
-    .file('./lighter.js')
-    .pop()
-  .compile();
+var bundle = browserify({
+	entry : __dirname + '/../src/lighter.js',
+	exports: 'require'
+});
+ 
+function write () {
+	var src = bundle.bundle();
+	fs.writeFile(__dirname + '/../lighter.js', src, function () {
+		console.log(Buffer(src).length + ' bytes written');
+	});
+}
+
+bundle.on('bundle', write);
+write();
