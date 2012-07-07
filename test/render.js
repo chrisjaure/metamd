@@ -4,13 +4,13 @@
 
 		describe('render', function() {
 
-			var page = 'markdown';
+			var page = 'Page 1\n=\n\nPage 1\n\ntest';
 
 			it('should render markdown', function() {
 
 				var html = render(page);
 
-				expect(html).to.equal('<p>markdown</p>\n');
+				expect(html).to.equal('<h1>Page 1</h1>\n<p>Page 1\n\n</p>\n<p>test</p>\n');
 			});
 
 		});

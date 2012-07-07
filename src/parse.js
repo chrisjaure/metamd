@@ -35,7 +35,7 @@ module.exports = function (text) {
 
 		});
 
-		return '=' + '\n\n';
+		return '===' + '\n\n';
 
 	});
 
