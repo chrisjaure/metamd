@@ -4,14 +4,18 @@ var
 	fs = require('fs'),
 	uglify = require('uglify-js'),
 	browserify = require('browserify'),
+	loadify = require('loadify'),
 
 	bundle = browserify({
-		entry : __dirname + '/../src/index.js',
+		require: __dirname + '/../src/index.js',
 		watch: (process.argv[2] == '-w')
 	});
 
 // try to enable different methods of loading
-bundle.append(fs.readFileSync(__dirname + '/append.js'));
+bundle.use(loadify({
+	module: './src/index.js',
+	name: 'lighter'
+}));
 
 function write () {
 
