@@ -364,6 +364,12 @@ process.binding = function (name) {
 })();
 });
 
+require.define("/src/index.js",function(require,module,exports,__dirname,__filename,process){var exports = module.exports = {};
+
+exports.parse = require('./parse');
+
+exports.render = require('./render');});
+
 require.define("/src/parse.js",function(require,module,exports,__dirname,__filename,process){/*
 
 parse.js
@@ -392,16 +398,16 @@ module.exports = function (text) {
 		body;
 		
 	text = text.replace(/\r\n|\r/g, '\n');
-	body = text.replace(/=+\n+([\s\S]*)\n\n/, function(match, meta) {
+	body = text.replace(/=+\n+([\s\S]*?)\n\n/, function(match, meta) {
 
 		meta.split('\n').forEach(function( field ) {
 
 			var parsed = field.split(':');
-			fields[parsed[0]] = parsed[1].trim();
+			fields[parsed[0]] = (parsed[1] || '').trim();
 
 		});
 
-		return '=' + '\n\n';
+		return '===' + '\n\n';
 
 	});
 
@@ -1223,27 +1229,24 @@ if (typeof module !== 'undefined') {
 }());
 });
 
-require.define("/src/index.js",function(require,module,exports,__dirname,__filename,process){var exports = module.exports = {};
 
-exports.parse = require('./parse');
 
-exports.render = require('./render');});
-require("/src/index.js");
+	(function (name, definition) {
 
-(function (name, definition) {
+		if (typeof define == 'function') {
+			define(definition);
+		}
+		else if (typeof module !='undefined') {
+			module.exports = definition();
+		}
+		else {
+			this[name] = definition();
+		}
 
-	if (typeof define == 'function') {
-		define(definition)
-	}
-	else if (typeof module !='undefined') {
-		module.exports = definition()
-	}
-	else {
-		this[name] = definition()
-	}
+	})('lighter', function () {
 
-})( 'lighter', function () {
+		return require('./src/index.js');
 
-	return require('/src/index.js');
+	});
 
-});})();
+})();

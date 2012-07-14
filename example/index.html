@@ -13,7 +13,9 @@
 		// You can load this with an AMD loader if you'd like!
 		// Otherwise you can load it normally; `lighter` will be exposed that way
 		require(['../lighter.client.js'], function(lighter) {
-			document.getElementById('markdown').innerHTML = lighter.render(lighter.parse('## This is a test').body);
+			var parsed = lighter.parse('## This is a test');
+			console.log('title: ' + parsed.title);
+			document.getElementById('markdown').innerHTML = lighter.render(parsed.body);
 		});
 
 	</script>

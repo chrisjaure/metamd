@@ -10,7 +10,7 @@
 
 				var data = parse(page);
 
-				expect(data).to.have.property('body').that.equal('Page 1\n=\n\nPage 1\n\ntest');
+				expect(data).to.have.property('body').that.equal('Page 1\n===\n\nPage 1\n\ntest');
 			});
 
 			it('should parse the meta data', function() {

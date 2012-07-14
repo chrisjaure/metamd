@@ -4,7 +4,7 @@
 
 		describe('render', function() {
 
-			var page = 'Page 1\n=\n\nPage 1\n\ntest';
+			var page = 'Page 1\n===\n\nPage 1\n\ntest';
 
 			it('should render markdown', function() {
 
