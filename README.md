@@ -20,8 +20,7 @@ Installation
 
 ### Node ###
 	
-	clone [url] && cd metamd
-	npm link
+	npm install metamd
 
 ### Client ###
 
