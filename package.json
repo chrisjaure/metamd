@@ -10,18 +10,28 @@
   },
   "repository": "git://github.com/chrisjaure/metamd.git",
   "homepage": "https://github.com/chrisjaure/metamd",
-  "bugs": { "url": "https://github.com/chrisjaure/metamd/issues" },
-  "keywords": [ "markdown", "meta", "parse" ],
-  "tags": [ "markdown", "meta", "parse" ],
+  "bugs": {
+    "url": "https://github.com/chrisjaure/metamd/issues"
+  },
+  "keywords": [
+    "markdown",
+    "meta",
+    "parse"
+  ],
+  "tags": [
+    "markdown",
+    "meta",
+    "parse"
+  ],
   "license": "MIT",
   "dependencies": {
-    "marked": "0.2.x",
-    "uglify-js": "1.3.x"
+    "marked": "0.2.x"
   },
   "devDependencies": {
     "mocha": "*",
     "chai": "*",
     "browserify": "1.3.x",
-    "loadify": "0.1.x"
+    "loadify": "0.1.x",
+    "uglify-js": "1.3.x"
   }
 }
