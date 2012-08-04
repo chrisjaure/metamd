@@ -1,19 +1,22 @@
 {
-  "name": "lighter",
+  "name": "metamd",
+  "description": "Parse out meta data from your markdown content",
   "version": "0.1.0",
   "author": "Chris Jaure (http://cleverchris.com)",
-  "description": "Static site generator.",
-  "engine": {
-    "node": ">=0.6"
-  },
   "main": "./src",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "compile": "./support/compile.js"
   },
+  "repository": "git://github.com/chrisjaure/metamd.git",
+  "homepage": "https://github.com/chrisjaure/metamd",
+  "bugs": { "url": "https://github.com/chrisjaure/metamd/issues" },
+  "keywords": [ "markdown", "meta", "parse" ],
+  "tags": [ "markdown", "meta", "parse" ],
   "license": "MIT",
   "dependencies": {
-    "marked": "~0.2.5",
-    "uglify-js": "~1.3.2"
+    "marked": "0.2.x",
+    "uglify-js": "1.3.x"
   },
   "devDependencies": {
     "mocha": "*",

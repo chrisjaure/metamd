@@ -11,11 +11,11 @@
 	<script type="text/javascript">
 
 		// You can load this with an AMD loader if you'd like!
-		// Otherwise you can load it normally; `lighter` will be exposed that way
-		require(['../lighter.client.js'], function(lighter) {
-			var parsed = lighter.parse('## This is a test');
+		// Otherwise you can load it normally; `metamd` will be exposed that way
+		require(['../metamd.client.js'], function(metamd) {
+			var parsed = metamd.parse('## This is a test');
 			console.log('title: ' + parsed.title);
-			document.getElementById('markdown').innerHTML = lighter.render(parsed.body);
+			document.getElementById('markdown').innerHTML = metamd.render(parsed.body);
 		});
 
 	</script>

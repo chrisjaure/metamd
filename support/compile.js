@@ -14,7 +14,7 @@ var
 // try to enable different methods of loading
 bundle.use(loadify({
 	module: './src/index.js',
-	name: 'lighter'
+	name: 'metamd'
 }));
 
 function write () {
@@ -28,12 +28,12 @@ function write () {
 	ast = uglify.uglify.ast_squeeze(ast);
 	minified = uglify.uglify.gen_code(ast);
 
-	fs.writeFile(__dirname + '/../lighter.client.min.js', minified, function () {
-		console.log('lighter.client.min.js: ' + Buffer(minified).length + ' bytes written.');
+	fs.writeFile(__dirname + '/../metamd.client.min.js', minified, function () {
+		console.log('metamd.client.min.js: ' + Buffer(minified).length + ' bytes written.');
 	});
 
-	fs.writeFile(__dirname + '/../lighter.client.js', src, function () {
-		console.log('lighter.client.js: ' + Buffer(src).length + ' bytes written.');
+	fs.writeFile(__dirname + '/../metamd.client.js', src, function () {
+		console.log('metamd.client.js: ' + Buffer(src).length + ' bytes written.');
 	});
 
 }

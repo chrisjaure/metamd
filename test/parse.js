@@ -1,6 +1,6 @@
 (function(expect, parse){
 
-	describe('Lighter', function() {
+	describe('MetaMD', function() {
 
 		describe('parse', function() {
 
@@ -26,5 +26,5 @@
 
 })(
 	typeof chai == 'undefined' ? require('chai').expect : chai.expect,
-	typeof lighter == 'undefined' ? require('../src').parse : lighter.parse
+	typeof metamd == 'undefined' ? require('../src').parse : metamd.parse
 );

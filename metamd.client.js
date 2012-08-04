@@ -1243,7 +1243,7 @@ if (typeof module !== 'undefined') {
 			this[name] = definition();
 		}
 
-	})('lighter', function () {
+	})('metamd', function () {
 
 		return require('./src/index.js');
 
