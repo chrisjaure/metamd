@@ -1,19 +1,20 @@
-lighter
-=======
+metamd
+======
 
-Parse and render Markdown.
+Parse meta Markdown data and render in the browser or server.
+
 
 Installation
 ------------
 
 ### Node ###
 	
-	clone [url] && cd lighter
+	clone [url] && cd metamd
 	npm link
 
 ### Client ###
 
-	<script type="text/javascript" src="lighter.client.min.js"></script>
+	<script type="text/javascript" src="metamd.client.min.js"></script>
 
 
 Example
@@ -21,11 +22,11 @@ Example
 
 ```
 var fs = require('fs');
-var lighter = require('lighter');
+var metamd = require('metamd');
 
-var parsed = lighter.parse(fs.readFileSync('./example/page1.md', 'utf-8'));
+var parsed = metamd.parse(fs.readFileSync('./example/page1.md', 'utf-8'));
 console.log(parsed);
-console.log(lighter.render(parsed.body));
+console.log(metamd.render(parsed.body));
 ```
 
 Will result in:
@@ -43,20 +44,19 @@ Will result in:
 
 ```
 
-
 var fs = require('fs');
-var lighter = require('./src');
-var parsed = lighter.parse(fs.readFileSync('./example/page1.md', 'utf-8'));
+var metamd = require('./src');
+var parsed = metamd.parse(fs.readFileSync('./example/page1.md', 'utf-8'));
 console.log(parsed);
-console.log(lighter.render(parsed.body));
+console.log(metamd.render(parsed.body));
 
 
 Usage
 -----
 
-`lighter.parse(<markdown>)` - returns an object with meta data parsed out of the markdown. There will be a `body` key that contains the markdown.
+`metamd.parse(<markdown>)` - returns an object with meta data parsed out of the markdown. There will be a `body` key that contains the markdown.
 
-`lighter.render(<markdown>)` - returns html rendered using marked.
+`metamd.render(<markdown>)` - returns html rendered using marked.
 
 
 Test
@@ -73,10 +73,9 @@ Testing is done with mocha and chai and can be run on the server or client.
 Maybe start a server, then navigate to `test/browser/index.html`.
 
 
+Compiling
+---------
 
-Goals
------
+If you make changes, you need to recompile for browser usage. It's easy:
 
-- Preview mardown files in the browser
-- Completely client side
-- Integrate with template
+  npm run compile
