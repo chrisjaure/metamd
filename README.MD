@@ -1,7 +1,18 @@
 metamd
 ======
 
-Parse meta Markdown data and render in the browser or server.
+Parse meta Markdown data and render in the browser or server. You can add meta data in the format of
+
+```
+Page 1
+======
+title: page1.md
+tags: test
+
+This is a _test_.
+```
+
+and automatically parse it out before rendering the markdown.
 
 
 Installation
@@ -44,12 +55,6 @@ Will result in:
 
 ```
 
-var fs = require('fs');
-var metamd = require('./src');
-var parsed = metamd.parse(fs.readFileSync('./example/page1.md', 'utf-8'));
-console.log(parsed);
-console.log(metamd.render(parsed.body));
-
 
 Usage
 -----
@@ -62,7 +67,7 @@ Usage
 Test
 ----
 
-Testing is done with mocha and chai and can be run on the server or client.
+Testing is done with mocha and chai and can be run on the server or client. Remember to install the dev dependencies before running the tests.
 
 ### Node ###
 
@@ -76,6 +81,6 @@ Maybe start a server, then navigate to `test/browser/index.html`.
 Compiling
 ---------
 
-If you make changes, you need to recompile for browser usage. It's easy:
+If you make changes, you need to recompile for browser usage. After you install the dev dependencies, it's easy:
 
   npm run compile
