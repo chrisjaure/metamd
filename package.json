@@ -1,7 +1,7 @@
 {
   "name": "metamd",
   "description": "Parse out meta data from your markdown content",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Chris Jaure (http://cleverchris.com)",
   "main": "./src",
   "scripts": {

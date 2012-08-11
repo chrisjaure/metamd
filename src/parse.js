@@ -20,13 +20,28 @@ Markdown.
 
 */
 
+var meta_match = new RegExp('=+\\n(\\S[\\s\\S]*?)(?:\\n\\n|\\s*$)');
+/*
+	=+				find one or more =
+	\\n				one newline
+	(				capturing group 1
+		\\S			one non-whitespace character
+		[\\s\\S]*?	any amount of any charater (non-greedy)
+	)
+	(?:				non-capturing group
+		\\n\\n		two newlines
+		|			or
+		\\s*$		any amount of whitespace at end of line
+	)
+*/
+
 module.exports = function (text) {
 
 	var	fields = {},
 		body;
 		
 	text = text.replace(/\r\n|\r/g, '\n');
-	body = text.replace(/=+\n+([\s\S]*?)\n\n/, function(match, meta) {
+	body = text.replace(meta_match, function(match, meta) {
 
 		meta.split('\n').forEach(function( field ) {
 
@@ -35,7 +50,7 @@ module.exports = function (text) {
 
 		});
 
-		return '===' + '\n\n';
+		return '===\n\n';
 
 	});
 
@@ -43,4 +58,4 @@ module.exports = function (text) {
 
 	return fields;
 
-}
+};
