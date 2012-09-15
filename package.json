@@ -1,11 +1,11 @@
 {
   "name": "metamd",
   "description": "Parse out meta data from your markdown content",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "Chris Jaure (http://cleverchris.com)",
   "main": "./src",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec",
+    "test": "mocha --reporter spec",
     "compile": "./support/compile.js"
   },
   "repository": "git://github.com/chrisjaure/metamd.git",

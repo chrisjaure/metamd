@@ -1,6 +1,6 @@
 (function(expect, test){
 
-	describe('MetaMD', function() {
+	describe('metamd', function() {
 
 		describe('parse', function() {
 
@@ -51,11 +51,27 @@
 			it('should render markdown', function() {
 
 				var html = test.render(page);
-
 				expect(html).to.equal('<h1>Page 1</h1>\n<p>Page 1\n\n</p>\n<p>test</p>\n');
+
 			});
 
 		});
+
+			
+		it('should parse and render markdown', function() {
+
+			var parsed = test('Page 1\n=====');
+			expect(parsed.body).to.equal('<h1>Page 1</h1>\n');
+
+		});
+
+		it('should not render markdown when instructed to do so', function() {
+
+			var parsed = test('Page 1\n=====', { render: false });
+			expect(parsed.body).to.equal('Page 1\n=====');
+
+		});
+
 
 	});
 

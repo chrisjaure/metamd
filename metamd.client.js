@@ -364,11 +364,22 @@ process.binding = function (name) {
 })();
 });
 
-require.define("/src/index.js",function(require,module,exports,__dirname,__filename,process){var exports = module.exports = {};
+require.define("/src/index.js",function(require,module,exports,__dirname,__filename,process){var exports = module.exports = metamd;
 
-exports.parse = require('./parse');
+function metamd (text, opts) {
+	var parsed = metamd.parse(text);
 
-exports.render = require('./render');});
+	opts = opts || {};
+
+	if (opts.render || typeof opts.render == 'undefined') {
+		parsed.body = metamd.render(parsed.body);
+	}
+
+	return parsed;
+}
+
+metamd.parse = require('./parse');
+metamd.render = require('./render');});
 
 require.define("/src/parse.js",function(require,module,exports,__dirname,__filename,process){/*
 
@@ -403,7 +414,7 @@ var meta_match = new RegExp('=+\\n(\\S[\\s\\S]*?)(?:\\n\\n|\\s*$)');
 	(?:				non-capturing group
 		\\n\\n		two newlines
 		|			or
-		\\s*$		any amount of whitespace at end of file
+		\\s*$		any amount of whitespace at end of line
 	)
 */
 
