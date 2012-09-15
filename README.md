@@ -4,12 +4,12 @@ metamd
 Parse meta Markdown data and render in the browser or server. You can add meta data in the format of
 
 ```
-Page 1
-======
+Optional Heading
+================
 title: page1.md
 tags: test
 
-This is a _test_.
+The two newlines preceding this paragraph are important.
 ```
 
 and automatically parse it out before rendering the markdown.
@@ -58,10 +58,13 @@ Will result in:
 Usage
 -----
 
-`metamd.parse(<markdown>)` - returns an object with meta data parsed out of the markdown. There will be a `body` key that contains the markdown.
+`metamd(<markdown>, [opts])` - returns an object with meta data and the markdown rendered in the `body` key. `opts` can be an object. Right now the only option is `render` which defaults to `true`.
+
+`metamd.parse(<markdown>)` - returns an object with meta data and the markdown body. The `body` key contains the markdown.
 
 `metamd.render(<markdown>)` - returns html rendered using marked.
 
+Meta data keys should be alphanumneric plus underscores. Nothing else will be parsed.
 
 Test
 ----
