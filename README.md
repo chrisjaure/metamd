@@ -1,9 +1,9 @@
 metamd
 ======
 
-Parse meta Markdown data and render in the browser or server. You can add meta data in the format of
+Parse meta Markdown data and render in the browser or server. Transform this:
 
-```
+```markdown
 Optional Heading
 ================
 title: page1.md
@@ -12,7 +12,13 @@ tags: test
 The two newlines preceding this paragraph are important.
 ```
 
-and automatically parse it out before rendering the markdown.
+into this:
+
+```javascript
+{ title: 'page1.md',
+  tags: 'test',
+  body: '<h1>Optional Heading</h1><p>The two newlines preceding this paragraph are important.</p>' }
+```
 
 
 Installation
@@ -30,7 +36,7 @@ Installation
 Example
 -------
 
-```
+```javascript
 var fs = require('fs');
 var metamd = require('metamd');
 
@@ -40,7 +46,7 @@ console.log(metamd.render(parsed.body));
 ```
 
 Will result in:
-```
+```javascript
 > { title: 'page1.md',
     tags: 'test',
     body: 'Page 1\n=\n\nThis is a _test_.\n\n```\nThis is another test\n```' }
@@ -58,13 +64,22 @@ Will result in:
 Usage
 -----
 
-`metamd(<markdown>, [opts])` - returns an object with meta data and the markdown rendered in the `body` key. `opts` can be an object. Right now the only option is `render` which defaults to `true`.
+### `metamd(<markdown>, [opts])` ###
 
-`metamd.parse(<markdown>)` - returns an object with meta data and the markdown body. The `body` key contains the markdown.
+Returns an object with meta data and the *rendered* markdown in the `body` key. Options:
 
-`metamd.render(<markdown>)` - returns html rendered using marked.
+- `render` - Defaults to true. Render the markdown as html.
 
-Meta data keys should be alphanumneric plus underscores. Nothing else will be parsed.
+### `metamd.parse(<markdown>)` ###
+
+Returns an object with meta data and the *unrendered* markdown in the `body` key.
+
+### `metamd.render(<markdown>)` ###
+
+Returns html rendered using marked.
+
+Meta data keys should be alphanumneric plus underscores. Nothing else will be parsed. Also be careful not to use reserved words or `body` as keys.
+
 
 Test
 ----
@@ -77,7 +92,7 @@ Testing is done with mocha and chai and can be run on the server or client. Reme
 
 ### Client ###
 
-Maybe start a server, then navigate to `test/browser/index.html`.
+Navigate to `test/browser/index.html`.
 
 
 Compiling
@@ -85,4 +100,6 @@ Compiling
 
 If you make changes, you need to recompile for browser usage. After you install the dev dependencies, it's easy:
 
-  npm run compile
+```
+npm run compile
+```
