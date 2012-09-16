@@ -72,7 +72,7 @@ module.exports = function (text) {
 
 	});
 
-	fields.body = body;
+	fields._body = body;
 
 	return fields;
 

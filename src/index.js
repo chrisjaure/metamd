@@ -1,16 +1,43 @@
-var exports = module.exports = metamd;
+var exports = module.exports = function (markdown) {
 
-function metamd (text, opts) {
-	var parsed = metamd.parse(text);
+	return new Metamd(markdown);
 
-	opts = opts || {};
+};
 
-	if (opts.render || typeof opts.render == 'undefined') {
-		parsed.body = metamd.render(parsed.body);
+var Metamd = function(markdown) {
+
+	var parsed = this._parse(markdown);
+	this.markdown = parsed._body;
+	delete parsed._body;
+	this.data = parsed;
+
+};
+
+Metamd.prototype.getHtml = function() {
+
+	if (!this.html) {
+		this.html = this._render(this.markdown);
 	}
 
-	return parsed;
-}
+	return this.html;
 
-metamd.parse = require('./parse');
-metamd.render = require('./render');
+};
+
+Metamd.prototype.getMarkdown = function() {
+
+	return this.markdown;
+
+};
+
+Metamd.prototype.getData = function(key) {
+
+	if (key) {
+		return this.data[key];
+	}
+
+	return this.data;
+
+};
+
+Metamd.prototype._parse = require('./parse');
+Metamd.prototype._render = require('./render');

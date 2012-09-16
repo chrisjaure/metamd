@@ -13,9 +13,9 @@
 		// You can load this with an AMD loader if you'd like!
 		// Otherwise you can load it normally; `metamd` will be exposed that way
 		require(['../metamd.client.js'], function(metamd) {
-			var parsed = metamd.parse('## This is a test');
-			console.log('title: ' + parsed.title);
-			document.getElementById('markdown').innerHTML = metamd.render(parsed.body);
+			var parsed = metamd('## This is a test\ntitle: The Test');
+			console.log('title: ' + parsed.getData('title'));
+			document.getElementById('markdown').innerHTML = parsed.getHtml();
 		});
 
 	</script>

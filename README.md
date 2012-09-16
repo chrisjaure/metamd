@@ -40,9 +40,9 @@ Example
 var fs = require('fs');
 var metamd = require('metamd');
 
-var parsed = metamd.parse(fs.readFileSync('./example/page1.md', 'utf-8'));
-console.log(parsed);
-console.log(metamd.render(parsed.body));
+var parsed = metamd(fs.readFileSync('./example/page1.md', 'utf-8'));
+console.log(parsed.getData());
+console.log(parsed.getHtml());
 ```
 
 Will result in:
@@ -64,21 +64,23 @@ Will result in:
 Usage
 -----
 
-### `metamd(<markdown>, [opts])` ###
+### `metamd(<markdown>)` ###
 
-Returns an object with meta data and the *rendered* markdown in the `body` key. Options:
+Returns an instance of `Metamd`.
 
-- `render` - Defaults to true. Render the markdown as html.
+### `Metamd.getData([key])` ###
 
-### `metamd.parse(<markdown>)` ###
+Returns an object containing the meta data. If `key` is provided, just that value will be returned.
 
-Returns an object with meta data and the *unrendered* markdown in the `body` key.
+### `Metamd.getMarkdown()` ###
 
-### `metamd.render(<markdown>)` ###
+Returns the markdown absent of the meta data.
+
+### `Metamd.getHtml()` ###
 
 Returns html rendered using marked.
 
-Meta data keys should be alphanumneric plus underscores. Nothing else will be parsed. Also be careful not to use reserved words or `body` as keys.
+**NOTE:** Meta data keys should be alphanumneric plus underscores. Nothing else will be parsed. Also be careful not to use reserved words or `_body` as keys.
 
 
 Test
