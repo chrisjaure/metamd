@@ -16,8 +16,9 @@ into this:
 
 ```javascript
 { title: 'page1.md',
-  tags: 'test',
-  body: '<h1>Optional Heading</h1><p>The two newlines preceding this paragraph are important.</p>' }
+  tags: 'test' }
+
+'<h1>Optional Heading</h1><p>The two newlines preceding this paragraph are important.</p>'
 ```
 
 
@@ -46,10 +47,9 @@ console.log(parsed.getHtml());
 ```
 
 Will result in:
-```javascript
+```
 > { title: 'page1.md',
-    tags: 'test',
-    body: 'Page 1\n=\n\nThis is a _test_.\n\n```\nThis is another test\n```' }
+    tags: 'test' }
 
 > <h1>Page 1
   </h1>
